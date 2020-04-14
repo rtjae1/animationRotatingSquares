@@ -20,12 +20,97 @@ html,
 body {
   margin: 0;
   padding: 0;
-  
+
 }
 
 .content {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: calc(50% - 25px);
+  left: calc(50% - 25px);
   transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+  background: #000;
+  animation: rotate 1s linear infinite;
+}
+
+.content div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  animation: animate 1s linear infinite;
+}
+
+.content div:nth-child(1) {
+  top: -100%;
+  left: -2px;
+  transform-origin: bottom right;
+}
+
+.content div:nth-child(2) {
+  right: -100%;
+  top: -2px;
+  transform-origin: bottom left;
+}
+
+.content div:nth-child(3) {
+  bottom: -100%;
+  left: 2px;
+  transform-origin: top left;
+}
+
+.content div:nth-child(4) {
+  left: -100%;
+  top: 2px;
+  transform-origin: top right;
+}
+
+.content::before,
+.content div::before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  bottom: 2px;
+  left: 2px;
+  background: var(--rainbow);
+}
+
+.content div:nth-child(1)::before {
+  background: var(--jazz1);
+}
+
+.content div:nth-child(2)::before {
+  background: var(--jazz2);
+}
+
+.content div:nth-child(3)::before {
+  background: var(--jazz3);
+}
+
+.content div:nth-child(4)::before {
+  background: var(--jazz4);
+}
+
+@keyframes animate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  50%,
+  100% {
+    transform: rotate(180deg);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(90deg);
+  }
+
+  50%,
+  100% {
+    transform: rotate(0deg);
+  }
 }
